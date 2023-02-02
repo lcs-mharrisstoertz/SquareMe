@@ -10,15 +10,19 @@ import SwiftUI
 struct RootsView: View {
     
     //MARK: stored properties
-    @State var inputNumber = ""
+    
+    //input user gives us
+    @State var inputGiven = ""
     
     //MARK: computed properties
-    
-    var SquaredNumber =
+
     
     var body: some View {
         NavigationView{
             VStack{
+                TextField("5.5", text: $inputGiven)
+                    .font(.largeTitle)
+                    .padding()
                 
             }
             .navigationTitle("Square me")
