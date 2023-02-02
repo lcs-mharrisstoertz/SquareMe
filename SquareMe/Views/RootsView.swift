@@ -9,10 +9,14 @@ import SwiftUI
 
 struct RootsView: View {
     
+    //STEP TWO
+    
     //MARK: stored properties
     
     //input user gives us
     @State var inputGiven = ""
+    
+    //STEP THREE
     
     //MARK: computed properties
     //convert input given into an optional double
@@ -27,14 +31,33 @@ struct RootsView: View {
         return inputGivenAsDouble
     }
     
-
+    //take the input and format it
+    var formattedOutputValue: String{
+        //see if we have a number to work with
+        guard let numberToSquare = inputGivenAsOptionalDouble else{
+            return "Please enter a numeric value"
+        }
+        //we do have a number to square so square it
+        let squaredNumber = numberToSquare * numberToSquare
+        
+        //STEP FOUR
+        
+        //return formatted number
+        return squaredNumber.formatted(.number.precision(.fractionLength(1)))
+        
+    }
     
     var body: some View {
         NavigationView{
             VStack{
+                
+                //STEP ONE
                 TextField("Enter a number...", text: $inputGiven)
                     .font(.largeTitle)
                     .padding()
+                
+                Text(formattedOutputValue)
+                    .font(.largeTitle)
                 
             }
             .navigationTitle("Square me")
